@@ -1,0 +1,89 @@
+2016-02-05T11:32:21	run[ 1 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre ] [ job-filter: * ]	0
+2016-02-05T11:33:15	run[ 1 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre ] [ job-filter: * ]	0
+2016-02-05T11:34:26	run[ 2 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre ] [ job-filter: * ]	0
+2016-02-05T11:41:21	run[ 3 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre ] [ job-filter: * ]	0
+2016-02-05T11:59:18	run[ 4 ] [ step-filter: foldersorter ] [ job-filter: * ]	0
+2016-02-05T12:02:18	run[ 1 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre ] [ job-filter: * ]	0
+2016-02-05T12:04:47	run[ 1 ] [ step-filter: foldersorter ] [ job-filter: * ]	0
+2016-02-05T12:06:03	run[ 1 ] [ step-filter: foldersorter ] [ job-filter: * ]	0
+2016-02-05T12:08:29	run[ 1 ] [ step-filter: foldersorter ] [ job-filter: * ]	0
+2016-02-05T12:15:23	run[ 1 ] [ step-filter: bowtieindexensembl ] [ job-filter: * ]	0
+2016-02-05T12:25:21	run[ 1 ] [ step-filter: bowtieindexensembl rmatsfastq ] [ job-filter: * ]	0
+2016-02-05T12:26:19	run[ 1 ] [ step-filter: bowtieindexensembl ] [ job-filter: * ]	0
+2016-02-05T12:27:40	run[ 1 ] [ step-filter: bowtieindexensembl ] [ job-filter: * ]	0
+2016-02-05T13:15:22	run[ 1 ] [ step-filter: rmatsfastqensembl ] [ job-filter: * ]	0
+2016-02-05T13:37:10	run[ 1 ] [ step-filter: ensembltolustre gencodetolustre gencodetolustre ] [ job-filter: * ]	0
+2016-02-05T14:14:48	run[ 1 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre salmonindexensembl bowtieindexensembl salmonindexgencode bowtieindexgencode salmonindexrefseq bowtieindexrefseq ] [ job-filter: * ]	0
+2016-02-05T14:36:03	run[ 1 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre salmonindexensembl bowtieindexensembl salmonindexgencode bowtieindexgencode salmonindexrefseq bowtieindexrefseq ] [ job-filter: * ]	0
+2016-02-05T14:37:00	run[ 1 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre salmonindexensembl bowtieindexensembl salmonindexgencode bowtieindexgencode salmonindexrefseq bowtieindexrefseq ] [ job-filter: * ]	0
+2016-02-05T14:37:54	run[ 1 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre salmonindexensembl bowtieindexensembl salmonindexgencode bowtieindexgencode salmonindexrefseq bowtieindexrefseq ] [ job-filter: * ]	0
+2016-02-05T15:01:57	run[ 1 ] [ step-filter: bowtie2indexensembl bowtie2indexgencode bowtie2indexrefseq ] [ job-filter: * ]	0
+2016-02-05T15:02:09	run[ 1 ] [ step-filter: bowtie2indexensembl bowtie2indexgencode bowtie2indexrefseq ] [ job-filter: * ]	0
+2016-02-05T16:12:03	run[ 1 ] [ step-filter: bowtie2indexensembl bowtie2indexgencode bowtie2indexrefseq ] [ job-filter: * ]	0
+2016-02-05T16:12:32	run[ 1 ] [ step-filter: bowtie2indexensembl ] [ job-filter: * ]	0
+2016-02-05T16:50:35	run[ 1 ] [ step-filter: tophattranscriptomeensembl ] [ job-filter: * ]	0
+2016-02-06T14:10:02	run[ 1 ] [ step-filter: ensembltolustre ] [ job-filter: * ]	0
+2016-02-06T14:14:52	run[ 1 ] [ step-filter: tophattranscriptomeensembl ] [ job-filter: * ]	0
+2016-02-08T07:24:20	run[ 1 ] [ step-filter: tophattranscriptomeensembl ] [ job-filter: * ]	0
+2016-02-08T07:24:45	run[ 1 ] [ step-filter: tophattranscriptomeensembl ] [ job-filter: * ]	0
+2016-02-08T07:41:54	run[ 1 ] [ step-filter: tophattranscriptomeensembl ] [ job-filter: * ]	0
+2016-02-08T07:47:28	run[ 1 ] [ step-filter: ensembltolustre tophattranscriptomeensembl ] [ job-filter: * ]	0
+2016-02-08T08:04:16	run[ 1 ] [ step-filter: ensembltolustre tophattranscriptomeensembl ] [ job-filter: * ]	0
+2016-02-08T08:36:30	run[ 1 ] [ step-filter: tophattranscriptomeensembl ] [ job-filter: * ]	0
+2016-02-08T10:00:46	run[ 1 ] [ step-filter: foldersorter ] [ job-filter: * ]	0
+2016-02-08T10:02:13	run[ 1 ] [ step-filter: foldersorter ] [ job-filter: * ]	0
+2016-02-08T10:02:43	run[ 1 ] [ step-filter: foldersorter ] [ job-filter: * ]	0
+2016-02-08T10:03:49	run[ 1 ] [ step-filter: rmatsfastqensembl tophatensembl salmonensembl suppaensembl ] [ job-filter: * ]	0
+2016-02-08T10:28:19	run[ 1 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre salmonindexensembl bowtieindexensembl tophattranscriptomeensembl salmonindexgencode bowtieindexgencode tophattranscriptomegencode salmonindexrefseq bowtieindexrefseq tophattranscriptomerefseq ] [ job-filter: * ]	0
+2016-02-08T10:45:18	run[ 1 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre salmonindexensembl bowtieindexensembl tophattranscriptomeensembl salmonindexgencode bowtieindexgencode tophattranscriptomegencode salmonindexrefseq bowtieindexrefseq tophattranscriptomerefseq ] [ job-filter: * ]	0
+2016-02-08T10:49:49	run[ 1 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre salmonindexensembl bowtieindexensembl tophattranscriptomeensembl salmonindexgencode bowtieindexgencode tophattranscriptomegencode salmonindexrefseq bowtieindexrefseq tophattranscriptomerefseq ] [ job-filter: * ]	0
+2016-02-08T10:51:44	run[ 1 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre salmonindexensembl bowtieindexensembl bowtie2indexensembl tophattranscriptomeensembl salmonindexgencode bowtieindexgencode bowtie2indexgencode tophattranscriptomegencode salmonindexrefseq bowtieindexrefseq bowtie2indexrefseq tophattranscriptomerefseq ] [ job-filter: * ]	0
+2016-02-08T11:05:54	run[ 1 ] [ step-filter: fastqtolustre ensembltolustre gencodetolustre refseqtolustre salmonindexensembl bowtieindexensembl bowtie2indexensembl tophattranscriptomeensembl salmonindexgencode bowtieindexgencode bowtie2indexgencode tophattranscriptomegencode salmonindexrefseq bowtieindexrefseq bowtie2indexrefseq tophattranscriptomerefseq ] [ job-filter: * ]	0
+2016-02-08T16:55:05	run[ 1 ] [ step-filter:  tophattranscriptomeensembl tophattranscriptomegencode tophattranscriptomerefseq ] [ job-filter: * ]	0
+2016-02-08T16:59:38	run[ 1 ] [ step-filter: refseqtolustre tophattranscriptomerefseq tophattranscriptomegencode tophattranscriptomeensembl ] [ job-filter: * ]	0
+2016-02-09T12:16:08	run[ 1 ] [ step-filter: tophattranscriptomerefseq tophattranscriptomegencode tophattranscriptomeensembl ] [ job-filter: * ]	0
+2016-02-09T13:29:18	run[ 1 ] [ step-filter: bowtie2indexensembl bowtie2indexgencode tophattranscriptomegencode tophattranscriptomeensembl ] [ job-filter: * ]	0
+2016-02-10T10:22:10	run[ 1 ] [ step-filter: foldersorter ] [ job-filter: * ]	0
+2016-02-10T11:13:57	run[ 1 ] [ step-filter: rmatsfastqensembl tophatensembl salmonensembl suppaensembl ] [ job-filter: * ]	0
+2016-02-10T11:27:05	run[ 1 ] [ step-filter: foldersorter ] [ job-filter: * ]	smoke-test
+2016-02-10T11:38:56	run[ 1 ] [ step-filter: rmatsfastqensembl tophatensembl salmonensembl suppaensembl ] [ job-filter: * ]	0
+2016-02-10T11:49:27	run[ 1 ] [ step-filter: rmatsfastqensembl tophatensembl salmonensembl suppaensembl ] [ job-filter: * ]	0
+2016-02-10T11:51:17	run[ 1 ] [ step-filter: rmatsfastqensembl ] [ job-filter: * ]	0
+2016-02-10T11:54:30	run[ 1 ] [ step-filter: tophatensembl ] [ job-filter: * ]	0
+2016-02-10T12:19:30	run[ 1 ] [ step-filter: fastqtolustre tophatensembl ] [ job-filter: * ]	0
+2016-02-10T12:21:21	run[ 1 ] [ step-filter: fastqtolustre tophatensembl ] [ job-filter: * ]	0
+2016-02-10T12:21:56	run[ 1 ] [ step-filter: fastqtolustre tophatensembl ] [ job-filter: * ]	0
+2016-02-10T12:27:33	run[ 1 ] [ step-filter: rmatsfastqensembl ] [ job-filter: * ]	0
+2016-02-10T12:30:40	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	smoke-test
+2016-02-11T11:23:38	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T11:46:41	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T12:34:34	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T12:48:37	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T12:59:47	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T13:16:58	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	smoke-test
+2016-02-11T13:17:04	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T13:51:35	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T13:57:20	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T14:11:38	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T14:33:35	run[ 1 ] [ step-filter: salmonensembl_sample2 suppaensembl ] [ job-filter: * ]	0
+2016-02-11T14:34:11	run[ 1 ] [ step-filter: salmonensembl_sample2 suppaensembl ] [ job-filter: * ]	0
+2016-02-11T14:46:06	run[ 1 ] [ step-filter: rmatsfastqensembl ] [ job-filter: * ]	0
+2016-02-11T15:56:41	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T15:59:58	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T16:03:16	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T16:39:35	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T16:47:46	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T16:50:08	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T16:52:28	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T17:03:56	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-11T17:10:07	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-12T14:10:22	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-12T14:15:39	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-12T14:46:32	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-12T14:48:29	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-12T16:10:03	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-12T16:34:28	run[ 1 ] [ step-filter: suppaensembl ] [ job-filter: * ]	0
+2016-02-17T16:27:26	run[ 1 ] [ step-filter: rmatsfastqensembl ] [ job-filter: * ]	0
+2016-02-19T10:14:46	run[ 1 ] [ step-filter: rmatsfastqensembl ] [ job-filter: * ]	0
+2016-02-19T11:52:51	run[ 1 ] [ step-filter: rmats32fastqensembl ] [ job-filter: * ]	0
+2016-02-19T12:14:23	run[ 1 ] [ step-filter: tophatensembl ] [ job-filter: * ]	0

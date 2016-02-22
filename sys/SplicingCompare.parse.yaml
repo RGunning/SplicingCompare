@@ -1,0 +1,460 @@
+--- 
+bowtie2indexensembl: 
+  cmd: "cd [% bowtie2indexensembl %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tgunzip -c [% ensembltolustre.ensembl.genome %] > [% bowtie2indexensembl.index.fa %];\n\tbowtie2-build -f [% bowtie2indexensembl.index.fa %] index;\n\teval ${genome[0]}_ensembl_bowtie2=$(pwd);\n\tdeclare -p $( echo ${genome[0]}_ensembl_bowtie2) > [% bowtie2indexensembl.genomeloc %]; 2>[% bowtie2indexensembl.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  mem: 10000
+  placeholders: 
+    - bowtie2indexensembl
+    - groupby.genome.datasource.genome
+    - ensembltolustre.ensembl.genome
+    - bowtie2indexensembl.index.fa
+    - bowtie2indexensembl.index.fa
+    - bowtie2indexensembl.genomeloc
+    - bowtie2indexensembl.err
+bowtie2indexgencode: 
+  cmd: "cd [% bowtie2indexgencode %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tgunzip -c [% gencodetolustre.gencode.genome %] > [% bowtie2indexgencode.index.fa %];\n\tbowtie2-build -f [% bowtie2indexgencode.index.fa %] index;\n\teval ${genome[0]}_gencode_bowtie2=$(pwd);\n\tdeclare -p $( echo ${genome[0]}_gencode_bowtie2) > [% bowtie2indexgencode.genomeloc %]; 2>[% bowtie2indexgencode.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  mem: 10000
+  placeholders: 
+    - bowtie2indexgencode
+    - groupby.genome.datasource.genome
+    - gencodetolustre.gencode.genome
+    - bowtie2indexgencode.index.fa
+    - bowtie2indexgencode.index.fa
+    - bowtie2indexgencode.genomeloc
+    - bowtie2indexgencode.err
+bowtie2indexrefseq: 
+  cmd: "cd [% bowtie2indexrefseq %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tgunzip -c [% refseqtolustre.refseq.genome %] > [% bowtie2indexrefseq.index.fa %];\n\tbowtie2-build -f [% bowtie2indexrefseq.index.fa %] index;\n\teval ${genome[0]}_refseq_bowtie2=$(pwd);\n\tdeclare -p $( echo ${genome[0]}_refseq_bowtie2) > [% bowtie2indexrefseq.genomeloc %]; 2>[% bowtie2indexrefseq.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  mem: 10000
+  placeholders: 
+    - bowtie2indexrefseq
+    - groupby.genome.datasource.genome
+    - refseqtolustre.refseq.genome
+    - bowtie2indexrefseq.index.fa
+    - bowtie2indexrefseq.index.fa
+    - bowtie2indexrefseq.genomeloc
+    - bowtie2indexrefseq.err
+bowtieindexensembl: 
+  cmd: "cd [% bowtieindexensembl %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/bowtie-0.12.8:${PATH}\";\n\tgunzip -c [% ensembltolustre.ensembl.genome %] > [% bowtieindexensembl.index.fa %];\n\tbowtie-build -f [% bowtieindexensembl.index.fa %] [% bowtieindexensembl.index %];\n\teval ${genome[0]}_ensembl_bowtie=$(pwd)/index;\n\tdeclare -p $( echo ${genome[0]}_ensembl_bowtie) > [% bowtieindexensembl.genomeloc %]; 2>[% bowtieindexensembl.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  mem: 10000
+  placeholders: 
+    - bowtieindexensembl
+    - groupby.genome.datasource.genome
+    - ensembltolustre.ensembl.genome
+    - bowtieindexensembl.index.fa
+    - bowtieindexensembl.index.fa
+    - bowtieindexensembl.index
+    - bowtieindexensembl.genomeloc
+    - bowtieindexensembl.err
+bowtieindexgencode: 
+  cmd: "cd [% bowtieindexgencode %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/bowtie-0.12.8:${PATH}\";\n\tgunzip -c [% gencodetolustre.gencode.genome %] > [% bowtieindexgencode.index.fa %];\n\tbowtie-build -f [% bowtieindexgencode.index.fa %] [% bowtieindexgencode.index %];\n\teval ${genome[0]}_gencode_bowtie=$(pwd)/index;\n\tdeclare -p $( echo ${genome[0]}_gencode_bowtie) > [% bowtieindexgencode.genomeloc %]; 2>[% bowtieindexgencode.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  mem: 10000
+  placeholders: 
+    - bowtieindexgencode
+    - groupby.genome.datasource.genome
+    - gencodetolustre.gencode.genome
+    - bowtieindexgencode.index.fa
+    - bowtieindexgencode.index.fa
+    - bowtieindexgencode.index
+    - bowtieindexgencode.genomeloc
+    - bowtieindexgencode.err
+bowtieindexrefseq: 
+  cmd: "cd [% bowtieindexrefseq %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/bowtie-0.12.8:${PATH}\";\n\tgunzip -c [% refseqtolustre.refseq.genome %] > [% bowtieindexrefseq.index.fa %];\n\tbowtie-build -f [% bowtieindexrefseq.index.fa %] [% bowtieindexrefseq.index %];\n\teval ${genome[0]}_refseq_bowtie=$(pwd)/index;\n\tdeclare -p $( echo ${genome[0]}_refseq_bowtie) > [% bowtieindexrefseq.genomeloc %]; 2>[% bowtieindexrefseq.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  mem: 10000
+  placeholders: 
+    - bowtieindexrefseq
+    - groupby.genome.datasource.genome
+    - refseqtolustre.refseq.genome
+    - bowtieindexrefseq.index.fa
+    - bowtieindexrefseq.index.fa
+    - bowtieindexrefseq.index
+    - bowtieindexrefseq.genomeloc
+    - bowtieindexrefseq.err
+ensembltolustre: 
+  cmd: "cd [% ensembltolustre %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tcase ${genome[0]} in\n\t\thg19)\n\t\t\tcp [% input.hg19.ensembl.genome %] [% ensembltolustre.ensembl.genome %];\n\t\t\teval ${genome[0]}_ensembl_genome=$(readlink -f [% ensembltolustre.ensembl.genome %]);\n\t\t\tdeclare -p $( echo ${genome[0]}_ensembl_genome) > [% ensembltolustre.genomeloc %];\n\t\t\tcp [% input.hg19.ensembl.transcriptome %] [% ensembltolustre.ensembl.transcriptome %];\n\t\t\teval ${genome[0]}_ensembl_transcriptome=$(readlink -f [% ensembltolustre.ensembl.transcriptome %] );\n\t\t\tdeclare -p $( echo ${genome[0]}_ensembl_transcriptome) >> [% ensembltolustre.genomeloc %];\n\t\t\tgunzip -c [% input.hg19.ensembl.gtf %] > [% ensembltolustre.ensembl.gtf %];\n\t\t\teval ${genome[0]}_ensembl_gtf=$(readlink -f [% ensembltolustre.ensembl.gtf %] );\n\t\t\tdeclare -p $( echo ${genome[0]}_ensembl_gtf) >> [% ensembltolustre.genomeloc %];\n\t\t\t;;\n\t\tmm10)\n\t\t\tcp [% input.mm10.ensembl.genome %] [% ensembltolustre.ensembl.genome %];\n\t\t\teval ${genome[0]}_ensembl_genome=$(readlink -f [% ensembltolustre.ensembl.genome %]);\n\t\t\tdeclare -p $( echo ${genome[0]}_ensembl_genome) > [% ensembltolustre.genomeloc %];\n\t\t\tcp [% input.mm10.ensembl.transcriptome %] [% ensembltolustre.ensembl.transcriptome %];\n\t\t\teval ${genome[0]}_ensembl_transcriptome=$(readlink -f [% ensembltolustre.ensembl.transcriptome %] );\n\t\t\tdeclare -p $( echo ${genome[0]}_ensembl_transcriptome) >> [% ensembltolustre.genomeloc %];\n\t\t\tgunzip -c [% input.mm10.ensembl.gtf %] > [% ensembltolustre.ensembl.gtf %];\n\t\t\teval ${genome[0]}_ensembl_gtf=$(readlink -f [% ensembltolustre.ensembl.gtf %] );\n\t\t\tdeclare -p $( echo ${genome[0]}_ensembl_gtf) >> [% ensembltolustre.genomeloc %];\n\t\t\t;;\n\t\t*)\n\t\t\t>&2 echo \"Genome Not Supported ${genome[0]}\" & exit 134;\n\tesac 2>[% ensembltolustre.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  placeholders: 
+    - ensembltolustre
+    - groupby.genome.datasource.genome
+    - input.hg19.ensembl.genome
+    - ensembltolustre.ensembl.genome
+    - ensembltolustre.ensembl.genome
+    - ensembltolustre.genomeloc
+    - input.hg19.ensembl.transcriptome
+    - ensembltolustre.ensembl.transcriptome
+    - ensembltolustre.ensembl.transcriptome
+    - ensembltolustre.genomeloc
+    - input.hg19.ensembl.gtf
+    - ensembltolustre.ensembl.gtf
+    - ensembltolustre.ensembl.gtf
+    - ensembltolustre.genomeloc
+    - input.mm10.ensembl.genome
+    - ensembltolustre.ensembl.genome
+    - ensembltolustre.ensembl.genome
+    - ensembltolustre.genomeloc
+    - input.mm10.ensembl.transcriptome
+    - ensembltolustre.ensembl.transcriptome
+    - ensembltolustre.ensembl.transcriptome
+    - ensembltolustre.genomeloc
+    - input.mm10.ensembl.gtf
+    - ensembltolustre.ensembl.gtf
+    - ensembltolustre.ensembl.gtf
+    - ensembltolustre.genomeloc
+    - ensembltolustre.err
+fastqtolustre: 
+  cmd: "cd [% fastqtolustre %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tcp [% datasource.location %] [% fastqtolustre.file.fastq.gz %];\n\tcp [% datasource.comparison_location %] [% fastqtolustre.file2.fastq.gz %]; 2>[% fastqtolustre.err %]"
+  condition: ~
+  placeholders: 
+    - fastqtolustre
+    - datasource.location
+    - fastqtolustre.file.fastq.gz
+    - datasource.comparison_location
+    - fastqtolustre.file2.fastq.gz
+    - fastqtolustre.err
+foldersorter: 
+  cmd: "cd [% foldersorter %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tcat [% jobs.ensembltolustre.genomeloc %] [% jobs.gencodetolustre.genomeloc %] \\\n\t\t[% jobs.refseqtolustre.genomeloc %] [% jobs.bowtieindexensembl.genomeloc %] \\\n\t\t[% jobs.bowtieindexgencode.genomeloc %] [% jobs.bowtieindexrefseq.genomeloc %] \\\n\t\t[% jobs.bowtie2indexensembl.genomeloc %] [% jobs.bowtie2indexgencode.genomeloc %] \\\n\t\t[% jobs.bowtie2indexrefseq.genomeloc %] [% jobs.salmonindexensembl.genomeloc %] \\\n\t\t[% jobs.salmonindexgencode.genomeloc %] [% jobs.salmonindexrefseq.genomeloc %] \\\n\t\t[% jobs.tophattranscriptomeensembl.genomeloc %] [% jobs.tophattranscriptomegencode.genomeloc %] \\\n\t\t[% jobs.tophattranscriptomerefseq.genomeloc %] > [% foldersorter.genomeloc %]; 2>[% foldersorter.err %]"
+  condition: once
+  placeholders: 
+    - foldersorter
+    - jobs.ensembltolustre.genomeloc
+    - jobs.gencodetolustre.genomeloc
+    - jobs.refseqtolustre.genomeloc
+    - jobs.bowtieindexensembl.genomeloc
+    - jobs.bowtieindexgencode.genomeloc
+    - jobs.bowtieindexrefseq.genomeloc
+    - jobs.bowtie2indexensembl.genomeloc
+    - jobs.bowtie2indexgencode.genomeloc
+    - jobs.bowtie2indexrefseq.genomeloc
+    - jobs.salmonindexensembl.genomeloc
+    - jobs.salmonindexgencode.genomeloc
+    - jobs.salmonindexrefseq.genomeloc
+    - jobs.tophattranscriptomeensembl.genomeloc
+    - jobs.tophattranscriptomegencode.genomeloc
+    - jobs.tophattranscriptomerefseq.genomeloc
+    - foldersorter.genomeloc
+    - foldersorter.err
+gencodetolustre: 
+  cmd: "cd [% gencodetolustre %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tcase ${genome[0]} in\n\t\thg19)\n\t\t\tcp [% input.hg19.gencode.genome %] [% gencodetolustre.gencode.genome %];\n\t\t\teval ${genome[0]}_gencode_genome=$(readlink -f [% gencodetolustre.gencode.genome %]);\n\t\t\tdeclare -p $( echo ${genome[0]}_gencode_genome) > [% gencodetolustre.genomeloc %];\n\t\t\tcp [% input.hg19.gencode.transcriptome %] [% gencodetolustre.gencode.transcriptome %];\n\t\t\teval ${genome[0]}_gencode_transcriptome=$(readlink -f [% gencodetolustre.gencode.transcriptome %] );\n\t\t\tdeclare -p $( echo ${genome[0]}_gencode_transcriptome) >> [% gencodetolustre.genomeloc %];\n\t\t\tgunzip -c [% input.hg19.gencode.gtf %] > [% gencodetolustre.gencode.gtf %];\n\t\t\teval ${genome[0]}_gencode_gtf=$(readlink -f [% gencodetolustre.gencode.gtf %] );\n\t\t\tdeclare -p $( echo ${genome[0]}_gencode_gtf) >> [% gencodetolustre.genomeloc %];\n\t\t\t;;\n\t\tmm10)\n\t\t\tcp [% input.mm10.gencode.genome %] [% gencodetolustre.gencode.genome %];\n\t\t\teval ${genome[0]}_gencode_genome=$(readlink -f [% gencodetolustre.gencode.genome %]);\n\t\t\tdeclare -p $( echo ${genome[0]}_gencode_genome) > [% gencodetolustre.genomeloc %];\n\t\t\tcp [% input.mm10.gencode.transcriptome %] [% gencodetolustre.gencode.transcriptome %];\n\t\t\teval ${genome[0]}_gencode_transcriptome=$(readlink -f [% gencodetolustre.gencode.transcriptome %] );\n\t\t\tdeclare -p $( echo ${genome[0]}_gencode_transcriptome) >> [% gencodetolustre.genomeloc %];\n\t\t\tgunzip -c [% input.mm10.gencode.gtf %] > [% gencodetolustre.gencode.gtf %];\n\t\t\teval ${genome[0]}_gencode_gtf=$(readlink -f [% gencodetolustre.gencode.gtf %] );\n\t\t\tdeclare -p $( echo ${genome[0]}_gencode_gtf) >> [% gencodetolustre.genomeloc %];\n\t\t\t;;\n\t\t*)\n\t\t\t>&2 echo \"Genome Not Supported ${genome[0]}\" & exit 134;\n\tesac 2>[% gencodetolustre.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  placeholders: 
+    - gencodetolustre
+    - groupby.genome.datasource.genome
+    - input.hg19.gencode.genome
+    - gencodetolustre.gencode.genome
+    - gencodetolustre.gencode.genome
+    - gencodetolustre.genomeloc
+    - input.hg19.gencode.transcriptome
+    - gencodetolustre.gencode.transcriptome
+    - gencodetolustre.gencode.transcriptome
+    - gencodetolustre.genomeloc
+    - input.hg19.gencode.gtf
+    - gencodetolustre.gencode.gtf
+    - gencodetolustre.gencode.gtf
+    - gencodetolustre.genomeloc
+    - input.mm10.gencode.genome
+    - gencodetolustre.gencode.genome
+    - gencodetolustre.gencode.genome
+    - gencodetolustre.genomeloc
+    - input.mm10.gencode.transcriptome
+    - gencodetolustre.gencode.transcriptome
+    - gencodetolustre.gencode.transcriptome
+    - gencodetolustre.genomeloc
+    - input.mm10.gencode.gtf
+    - gencodetolustre.gencode.gtf
+    - gencodetolustre.gencode.gtf
+    - gencodetolustre.genomeloc
+    - gencodetolustre.err
+miso: 
+  cmd: cd [% miso %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR;  2>[% miso.err %]
+  condition: ~
+  placeholders: 
+    - miso
+    - miso.err
+misoensembl: 
+  cmd: cd [% misoensembl %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR;  2>[% misoensembl.err %]
+  condition: ~
+  placeholders: 
+    - misoensembl
+    - misoensembl.err
+refseqtolustre: 
+  cmd: "cd [% refseqtolustre %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tcase ${genome[0]} in\n\t\thg19)\n\t\t\tcp [% input.hg19.refseq.genome %] [% refseqtolustre.refseq.genome %];\n\t\t\teval ${genome[0]}_refseq_genome=$(readlink -f [% refseqtolustre.refseq.genome %]);\n\t\t\tdeclare -p $( echo ${genome[0]}_refseq_genome) > [% refseqtolustre.genomeloc %];\n\t\t\tcp [% input.hg19.refseq.transcriptome %] [% refseqtolustre.refseq.transcriptome %];\n\t\t\teval ${genome[0]}_refseq_transcriptome=$(readlink -f [% refseqtolustre.refseq.transcriptome %] );\n\t\t\tdeclare -p $( echo ${genome[0]}_refseq_transcriptome) >> [% refseqtolustre.genomeloc %];\n\t\t\tgunzip -c [% input.hg19.refseq.gtf %] > [% refseqtolustre.refseq.gtf %];\n\t\t\teval ${genome[0]}_refseq_gtf=$(readlink -f [% refseqtolustre.refseq.gtf %] );\n\t\t\tdeclare -p $( echo ${genome[0]}_refseq_gtf) >> [% refseqtolustre.genomeloc %];\n\t\t\t;;\n\t\tmm10)\n\t\t\tcp [% input.mm10.refseq.genome %] [% refseqtolustre.refseq.genome %];\n\t\t\teval ${genome[0]}_refseq_genome=$(readlink -f [% refseqtolustre.refseq.genome %]);\n\t\t\tdeclare -p $( echo ${genome[0]}_refseq_genome) > [% refseqtolustre.genomeloc %];\n\t\t\tcp [% input.mm10.refseq.transcriptome %] [% refseqtolustre.refseq.transcriptome %];\n\t\t\teval ${genome[0]}_refseq_transcriptome=$(readlink -f [% refseqtolustre.refseq.transcriptome %] );\n\t\t\tdeclare -p $( echo ${genome[0]}_refseq_transcriptome) >> [% refseqtolustre.genomeloc %];\n\t\t\tgunzip -c [% input.mm10.refseq.gtf %] > [% refseqtolustre.refseq.gtf %];\n\t\t\teval ${genome[0]}_refseq_gtf=$(readlink -f [% refseqtolustre.refseq.gtf %] );\n\t\t\tdeclare -p $( echo ${genome[0]}_refseq_gtf) >> [% refseqtolustre.genomeloc %];\n\t\t\t;;\n\t\t*)\n\t\t\t>&2 echo \"Genome Not Supported ${genome[0]}\" & exit 134;\n\tesac 2>[% refseqtolustre.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  placeholders: 
+    - refseqtolustre
+    - groupby.genome.datasource.genome
+    - input.hg19.refseq.genome
+    - refseqtolustre.refseq.genome
+    - refseqtolustre.refseq.genome
+    - refseqtolustre.genomeloc
+    - input.hg19.refseq.transcriptome
+    - refseqtolustre.refseq.transcriptome
+    - refseqtolustre.refseq.transcriptome
+    - refseqtolustre.genomeloc
+    - input.hg19.refseq.gtf
+    - refseqtolustre.refseq.gtf
+    - refseqtolustre.refseq.gtf
+    - refseqtolustre.genomeloc
+    - input.mm10.refseq.genome
+    - refseqtolustre.refseq.genome
+    - refseqtolustre.refseq.genome
+    - refseqtolustre.genomeloc
+    - input.mm10.refseq.transcriptome
+    - refseqtolustre.refseq.transcriptome
+    - refseqtolustre.refseq.transcriptome
+    - refseqtolustre.genomeloc
+    - input.mm10.refseq.gtf
+    - refseqtolustre.refseq.gtf
+    - refseqtolustre.refseq.gtf
+    - refseqtolustre.genomeloc
+    - refseqtolustre.err
+rmats32fastqensembl: 
+  cmd: "cd [% rmats32fastqensembl %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tsource [% foldersorter.genomeloc%];\n\tgtf=${[% datasource.genome %]_ensembl_gtf};\n\ttranscriptome=${[% datasource.genome %]_ensembl_transcriptome};\n\tgenome=${[% datasource.genome %]_ensembl_genome};\n\tbowtieindex=${[% datasource.genome %]_ensembl_bowtie}\n\tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/rMATS.3.2.0.beta:${ALGORITHMS}/tophat2.1.0/tophat-2.1.0.Linux_x86_64/:${PATH}\";\n\tset +o posix;\n\tbash <<-EOF\n\tRNASeq-MATS.py -s1 <(gunzip -c [% fastqtolustre.file.fastq.gz %]) -s2 <(gunzip -c [% fastqtolustre.file2.fastq.gz %]) -gtf ${gtf} -bi ${bowtieindex} -o [% rmats32fastqensembl %] -t [% datasource.frag_type %] -len [% datasource.read_length %];\n\tEOF\n\t: 2>[% rmats32fastqensembl.err %]"
+  condition: ~
+  cores: 16
+  mem: 3000
+  placeholders: 
+    - rmats32fastqensembl
+    - datasource.genome
+    - datasource.genome
+    - datasource.genome
+    - datasource.genome
+    - fastqtolustre.file.fastq.gz
+    - fastqtolustre.file2.fastq.gz
+    - rmats32fastqensembl
+    - datasource.frag_type
+    - datasource.read_length
+    - rmats32fastqensembl.err
+rmatsbam: 
+  cmd: "cd [% rmatsbam %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/bowtie-0.12.8:${ALGORITHMS}/samtools-0.1.19/bin:${ALGORITHMS}/tophat-1.4.1.Linux_x86_64:${PATH}\"; 2>[% rmatsbam.err %]"
+  condition: ~
+  placeholders: 
+    - rmatsbam
+    - rmatsbam.err
+rmatsbamensembl: 
+  cmd: "cd [% rmatsbamensembl %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/bowtie-0.12.8:${ALGORITHMS}/samtools-0.1.19/bin:${ALGORITHMS}/tophat-1.4.1.Linux_x86_64:${PATH}\";\n\tRNASeq-MATS.py -s1 rep1_1[:rep1_2][,rep2_1[:rep2_2]]* -s2 rep1_1[:rep1_2][,rep2_1[:rep2_2]]* -gtf gtfFile -bi bowtieIndexBase -o outDir -t readType -len readLength [options]* 2>[% rmatsbamensembl.err %]"
+  condition: ~
+  placeholders: 
+    - rmatsbamensembl
+    - rmatsbamensembl.err
+rmatsfastq: 
+  cmd: "cd [% rmatsfastq %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/bowtie-0.12.8:${ALGORITHMS}/samtools-0.1.19/bin:${ALGORITHMS}/tophat-1.4.1.Linux_x86_64:${PATH}\"; 2>[% rmatsfastq.err %]"
+  condition: ~
+  placeholders: 
+    - rmatsfastq
+    - rmatsfastq.err
+rmatsfastqensembl: 
+  cmd: "cd [% rmatsfastqensembl %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tsource [% foldersorter.genomeloc%];\n\tgtf=${[% datasource.genome %]_ensembl_gtf};\n\ttranscriptome=${[% datasource.genome %]_ensembl_transcriptome};\n\tgenome=${[% datasource.genome %]_ensembl_genome};\n\tbowtieindex=${[% datasource.genome %]_ensembl_bowtie}\n\tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/bowtie-0.12.8:${ALGORITHMS}/samtools-0.1.19/bin:${ALGORITHMS}/tophat-1.4.1.Linux_x86_64:${PATH}\";\n\tset +o posix;\n\tbash <<-EOF\n\tRNASeq-MATS.py -s1 <(gunzip -c [% fastqtolustre.file.fastq.gz %]) -s2 <(gunzip -c [% fastqtolustre.file2.fastq.gz %]) -gtf ${gtf} -bi ${bowtieindex} -o [% rmatsfastqensembl %] -t [% datasource.frag_type %] -len [% datasource.read_length %];\n\tEOF\n\t: 2>[% rmatsfastqensembl.err %]"
+  condition: ~
+  cores: 16
+  mem: 3000
+  placeholders: 
+    - rmatsfastqensembl
+    - datasource.genome
+    - datasource.genome
+    - datasource.genome
+    - datasource.genome
+    - fastqtolustre.file.fastq.gz
+    - fastqtolustre.file2.fastq.gz
+    - rmatsfastqensembl
+    - datasource.frag_type
+    - datasource.read_length
+    - rmatsfastqensembl.err
+salmon: 
+  cmd: cd [% salmon %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR;  2>[% salmon.err %]
+  condition: ~
+  placeholders: 
+    - salmon
+    - salmon.err
+salmonensembl: 
+  cmd: "cd [% salmonensembl %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tsource [% foldersorter.genomeloc%];\n\tgtf=${[% datasource.genome %]_ensembl_gtf};\n\ttranscriptome=${[% datasource.genome %]_ensembl_transcriptome};\n\tgenome=${[% datasource.genome %]_ensembl_genome};\n\tsalmonindex=${[% datasource.genome %]_ensembl_salmon}\n\tset +o posix;\n\tfunction quit { >&2 echo $1; exit 3;}\n\tcase [% datasource.frag_type %] in\n\t\tsingle)\n\t\t\t{\n\t\t\t\tbash <<-EOF\n\t\t\t\tsalmon --no-version-check quant -p 12 --useVBOpt --biasCorrect -i ${salmonindex} -l [% datasource.libtype %] -r <(gunzip -cf [% fastqtolustre.file.fastq.gz %]) -o [% salmonensembl %] -g ${gtf};\n\t\t\t\tEOF\n\t\t\t} || { quit \"single end failed\"; }\n\t\t\t;;\n\t\tpaired)\n\t\t\t{\n\t\t\t\tbash <<-EOF\n\t\t\t\tsalmon --no-version-check quant -p 12 --useVBOpt --biasCorrect -i ${salmonindex} -l [% datasource.libtype %] -1 <(gunzip -cf [% fastqtolustre.file.fastq.gz %]) -2 <(TO BE FILLED IN) -o [% salmonensembl %] -g ${gtf};\n\t\t\t\tEOF\n\t\t\t} || { quit \"paired-end failed\"; }\n\t\t\t;;\n\t\t*)\n\t\t\tquit \"unknown frag_type\";\n\t\t\t;;\n\tesac; 2>[% salmonensembl.err %]"
+  condition: ~
+  cores: 12
+  mem: 10000
+  outputfiles: 
+    - libFormatCounts.txt
+    - libParams
+    - logs
+    - quant.genes.sf
+    - quant.sf
+  placeholders: 
+    - salmonensembl
+    - datasource.genome
+    - datasource.genome
+    - datasource.genome
+    - datasource.genome
+    - datasource.frag_type
+    - datasource.libtype
+    - fastqtolustre.file.fastq.gz
+    - salmonensembl
+    - datasource.libtype
+    - fastqtolustre.file.fastq.gz
+    - salmonensembl
+    - salmonensembl.err
+salmonensembl_sample2: 
+  cmd: "cd [% salmonensembl_sample2 %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tsource [% foldersorter.genomeloc%];\n\tgtf=${[% datasource.genome %]_ensembl_gtf};\n\ttranscriptome=${[% datasource.genome %]_ensembl_transcriptome};\n\tgenome=${[% datasource.genome %]_ensembl_genome};\n\tsalmonindex=${[% datasource.genome %]_ensembl_salmon}\n\tset +o posix;\n\tfunction quit { >&2 echo $1; exit 3;}\n\tcase [% datasource.frag_type %] in\n\t\tsingle)\n\t\t\t{\n\t\t\t\tbash <<-EOF\n\t\t\t\tsalmon --no-version-check quant -p 12 --useVBOpt --biasCorrect -i ${salmonindex} -l [% datasource.libtype %] -r <(gunzip -cf [% fastqtolustre.file2.fastq.gz %]) -o [% salmonensembl_sample2 %] -g ${gtf};\n\t\t\t\tEOF\n\t\t\t} || { quit \"single end failed\"; }\n\t\t\t;;\n\t\tpaired)\n\t\t\t{\n\t\t\t\tbash <<-EOF\n\t\t\t\tsalmon --no-version-check quant -p 12 --useVBOpt --biasCorrect -i ${salmonindex} -l [% datasource.libtype %] -1 <(gunzip -cf [% fastqtolustre.file2.fastq.gz %]) -2 <(TO BE FILLED IN) -o [% salmonensembl_sample2 %] -g ${gtf};\n\t\t\t\tEOF\n\t\t\t} || { quit \"paired-end failed\"; }\n\t\t\t;;\n\t\t*)\n\t\t\tquit \"unknown frag_type\";\n\t\t\t;;\n\tesac; 2>[% salmonensembl_sample2.err %]"
+  condition: ~
+  cores: 12
+  mem: 10000
+  outputfiles: 
+    - libFormatCounts.txt
+    - libParams
+    - logs
+    - quant.genes.sf
+    - quant.sf
+  placeholders: 
+    - salmonensembl_sample2
+    - datasource.genome
+    - datasource.genome
+    - datasource.genome
+    - datasource.genome
+    - datasource.frag_type
+    - datasource.libtype
+    - fastqtolustre.file2.fastq.gz
+    - salmonensembl_sample2
+    - datasource.libtype
+    - fastqtolustre.file2.fastq.gz
+    - salmonensembl_sample2
+    - salmonensembl_sample2.err
+salmonindexensembl: 
+  cmd: "cd [% salmonindexensembl %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tset +o posix;\n\tbash <<-EOF\n\tsalmon --no-version-check index -t <(gunzip -c [% ensembltolustre.ensembl.transcriptome %]) -p 24 -i [% salmonindexensembl %] --type quasi -k 31;\n\tEOF\n\teval ${genome[0]}_ensembl_salmon=$(pwd);\n\tdeclare -p $( echo ${genome[0]}_ensembl_salmon) > [% salmonindexensembl.genomeloc %]; 2>[% salmonindexensembl.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  cores: 24
+  mem: 10000
+  placeholders: 
+    - salmonindexensembl
+    - groupby.genome.datasource.genome
+    - ensembltolustre.ensembl.transcriptome
+    - salmonindexensembl
+    - salmonindexensembl.genomeloc
+    - salmonindexensembl.err
+salmonindexgencode: 
+  cmd: "cd [% salmonindexgencode %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tset +o posix;\n\tbash <<-EOF\n\tsalmon --no-version-check index -t <(gunzip -c [% gencodetolustre.gencode.transcriptome %]) -p 24 -i [% salmonindexgencode %] --type quasi -k 31;\n\tEOF\n\teval ${genome[0]}_gencode_salmon=$(pwd);\n\tdeclare -p $( echo ${genome[0]}_gencode_salmon) > [% salmonindexgencode.genomeloc %]; 2>[% salmonindexgencode.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  cores: 24
+  mem: 10000
+  placeholders: 
+    - salmonindexgencode
+    - groupby.genome.datasource.genome
+    - gencodetolustre.gencode.transcriptome
+    - salmonindexgencode
+    - salmonindexgencode.genomeloc
+    - salmonindexgencode.err
+salmonindexrefseq: 
+  cmd: "cd [% salmonindexrefseq %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tset +o posix;\n\tbash <<-EOF\n\tsalmon --no-version-check index -t <(gunzip -c [% refseqtolustre.refseq.transcriptome %]) -p 24 -i [% salmonindexrefseq %] --type quasi -k 31;\n\tEOF\n\teval ${genome[0]}_refseq_salmon=$(pwd);\n\tdeclare -p $( echo ${genome[0]}_refseq_salmon) > [% salmonindexrefseq.genomeloc %]; 2>[% salmonindexrefseq.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  cores: 24
+  mem: 10000
+  placeholders: 
+    - salmonindexrefseq
+    - groupby.genome.datasource.genome
+    - refseqtolustre.refseq.transcriptome
+    - salmonindexrefseq
+    - salmonindexrefseq.genomeloc
+    - salmonindexrefseq.err
+suppa: 
+  cmd: cd [% suppa %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR;  2>[% suppa.err %]
+  condition: ~
+  placeholders: 
+    - suppa
+    - suppa.err
+suppaensembl: 
+  cmd: "cd [% suppaensembl %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tset -x;\n\techo -e \"sample1\\tsample2\" > simple.expression;\n\tset +o posix;\n\tbash <<-EOF\n\tpaste <(sed '1d' [% salmonensembl.output5 %] |cut -f 1,4) <(sed '1d' [% salmonensembl_sample2.output5 %] |cut -f 4) >> [% suppaensembl.simple.expression %];\n\tEOF\n\t:\n\tsource [% foldersorter.genomeloc%];\n\tgtf=\"${[% datasource.genome %]_ensembl_gtf}\";\n\ttranscriptome=\"${[% datasource.genome %]_ensembl_transcriptome}\";\n\tgenome=\"${[% datasource.genome %]_ensembl_genome}\";\n\tcase [% datasource.splicing %] in\n\t\tES)\n\t\t\tevent=\"SE\";\n\t\t\t\t;;\n\t\tIR)\n\t\t\tevent=\"RI\";\n\t\t\t;;\n\t\t*)\n\t\t\tevent=\"SE SS MX RI FL\";\n\t\t\t;;\n\tesac;\n\t>&2 echo \"${gtf} ${event}\";\n\t>&2 echo \"suppa generateEvents -i ${gtf} -o suppa.events -e ${event} -p\";\n\tsource ~/.bash_aliases;\n\tsuppa generateEvents -i ${gtf} -o suppa.events -e ${event} -p;\n\tregex=\"suppa.events.([A-Z]+).ioe\";\n\tfor i in *.ioe\n\tdo [[ ${i} =~ ${regex} ]];\n\t\t>&2 echo ${i};\n\t\tname=\"${BASH_REMATCH[1]}\";\n\t\t>&2 echo ${name};\n\t\t>&2 echo \"suppa psiPerEvent --ioe-file $i -e [% suppaensembl.simple.expression %] -o output.$name;\";\n\t\tsuppa psiPerEvent --ioe-file $i -e [% suppaensembl.simple.expression %] -o output.$name;\n\tdone 2>[% suppaensembl.err %]"
+  condition: ~
+  mem: 5000
+  placeholders: 
+    - suppaensembl
+    - salmonensembl.output5
+    - salmonensembl_sample2.output5
+    - suppaensembl.simple.expression
+    - datasource.genome
+    - datasource.genome
+    - datasource.genome
+    - datasource.splicing
+    - suppaensembl.simple.expression
+    - suppaensembl.simple.expression
+    - suppaensembl.err
+tophat: 
+  cmd: cd [% tophat %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR;  2>[% tophat.err %]
+  condition: ~
+  placeholders: 
+    - tophat
+    - tophat.err
+tophatensembl: 
+  cmd: "cd [% tophatensembl %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tsource [% foldersorter.genomeloc%];\n\tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/tophat2.1.0/tophat-2.1.0.Linux_x86_64/:${PATH}\";\n\tgtf=${[% datasource.genome %]_ensembl_gtf};\n\ttophat=${[% datasource.genome %]_ensembl_tophat};\n\tBOWTIE2_INDEXES=${[% datasource.genome %]_ensembl_bowtie2};\n\ttophat -p 12 -G ${gtf} -T ${tophat} [% fastqtolustre.file.fastq.gz %]; 2>[% tophatensembl.err %]"
+  condition: ~
+  cores: 12
+  mem: 15000
+  placeholders: 
+    - tophatensembl
+    - datasource.genome
+    - datasource.genome
+    - datasource.genome
+    - fastqtolustre.file.fastq.gz
+    - tophatensembl.err
+tophattranscriptomeensembl: 
+  cmd: "cd [% tophattranscriptomeensembl %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/tophat2.1.0/tophat-2.1.0.Linux_x86_64/:${PATH}\";\n\tBOWTIE2_INDEXES=[% bowtie2indexensembl %];\n\ttophat -G [% ensembltolustre.ensembl.gtf %] --transcriptome-index index ${BOWTIE2_INDEXES}/index;\n\teval ${genome[0]}_ensembl_tophat=$(pwd)/index/ensembl;\n\tdeclare -p $( echo ${genome[0]}_ensembl_tophat) > [% tophattranscriptomeensembl.genomeloc %]; 2>[% tophattranscriptomeensembl.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  mem: 5000
+  placeholders: 
+    - tophattranscriptomeensembl
+    - groupby.genome.datasource.genome
+    - bowtie2indexensembl
+    - ensembltolustre.ensembl.gtf
+    - tophattranscriptomeensembl.genomeloc
+    - tophattranscriptomeensembl.err
+tophattranscriptomegencode: 
+  cmd: "cd [% tophattranscriptomegencode %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/tophat2.1.0/tophat-2.1.0.Linux_x86_64/:${PATH}\";\n\tBOWTIE2_INDEXES=[% bowtie2indexgencode %];\n\ttophat -G [% gencodetolustre.gencode.gtf %] --transcriptome-index ./index ${BOWTIE2_INDEXES}/index;\n\teval ${genome[0]}_gencode_tophat=$(pwd)/index/gencode;\n\tdeclare -p $( echo ${genome[0]}_gencode_tophat) > [% tophattranscriptomegencode.genomeloc %]; 2>[% tophattranscriptomegencode.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  mem: 5000
+  placeholders: 
+    - tophattranscriptomegencode
+    - groupby.genome.datasource.genome
+    - bowtie2indexgencode
+    - gencodetolustre.gencode.gtf
+    - tophattranscriptomegencode.genomeloc
+    - tophattranscriptomegencode.err
+tophattranscriptomerefseq: 
+  cmd: "cd [% tophattranscriptomerefseq %];  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tgenome=([% groupby.genome.datasource.genome %]);\n\tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/tophat2.1.0/tophat-2.1.0.Linux_x86_64/:${PATH}\";\n\tBOWTIE2_INDEXES=[% bowtie2indexrefseq %];\n\ttophat -G [% refseqtolustre.refseq.gtf %] --transcriptome-index ./index ${BOWTIE2_INDEXES}/index;\n\teval ${genome[0]}_refseq_tophat=$(pwd)/index/refseq;\n\tdeclare -p $( echo ${genome[0]}_refseq_tophat) > [% tophattranscriptomerefseq.genomeloc %]; 2>[% tophattranscriptomerefseq.err %]"
+  condition: groupby
+  condition_params: 
+    - genome
+  mem: 5000
+  placeholders: 
+    - tophattranscriptomerefseq
+    - groupby.genome.datasource.genome
+    - bowtie2indexrefseq
+    - refseqtolustre.refseq.gtf
+    - tophattranscriptomerefseq.genomeloc
+    - tophattranscriptomerefseq.err

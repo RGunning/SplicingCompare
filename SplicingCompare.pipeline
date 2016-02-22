@@ -1,0 +1,451 @@
+fastqtolustre.
+	cp [% datasource.location %] [% fastqtolustre.file.fastq.gz %];
+	cp [% datasource.comparison_location %] [% fastqtolustre.file2.fastq.gz %];
+
+
+ensembltolustre.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	case ${genome[0]} in
+		hg19)
+			cp [% input.hg19.ensembl.genome %] [% ensembltolustre.ensembl.genome %];
+			eval ${genome[0]}_ensembl_genome=$(readlink -f [% ensembltolustre.ensembl.genome %]);
+			declare -p $( echo ${genome[0]}_ensembl_genome) > [% ensembltolustre.genomeloc %];
+			cp [% input.hg19.ensembl.transcriptome %] [% ensembltolustre.ensembl.transcriptome %];
+			eval ${genome[0]}_ensembl_transcriptome=$(readlink -f [% ensembltolustre.ensembl.transcriptome %] );
+			declare -p $( echo ${genome[0]}_ensembl_transcriptome) >> [% ensembltolustre.genomeloc %];
+			gunzip -c [% input.hg19.ensembl.gtf %] > [% ensembltolustre.ensembl.gtf %];
+			eval ${genome[0]}_ensembl_gtf=$(readlink -f [% ensembltolustre.ensembl.gtf %] );
+			declare -p $( echo ${genome[0]}_ensembl_gtf) >> [% ensembltolustre.genomeloc %];
+			;;
+		mm10)
+			cp [% input.mm10.ensembl.genome %] [% ensembltolustre.ensembl.genome %];
+			eval ${genome[0]}_ensembl_genome=$(readlink -f [% ensembltolustre.ensembl.genome %]);
+			declare -p $( echo ${genome[0]}_ensembl_genome) > [% ensembltolustre.genomeloc %];
+			cp [% input.mm10.ensembl.transcriptome %] [% ensembltolustre.ensembl.transcriptome %];
+			eval ${genome[0]}_ensembl_transcriptome=$(readlink -f [% ensembltolustre.ensembl.transcriptome %] );
+			declare -p $( echo ${genome[0]}_ensembl_transcriptome) >> [% ensembltolustre.genomeloc %];
+			gunzip -c [% input.mm10.ensembl.gtf %] > [% ensembltolustre.ensembl.gtf %];
+			eval ${genome[0]}_ensembl_gtf=$(readlink -f [% ensembltolustre.ensembl.gtf %] );
+			declare -p $( echo ${genome[0]}_ensembl_gtf) >> [% ensembltolustre.genomeloc %];
+			;;
+		*)
+			>&2 echo "Genome Not Supported ${genome[0]}" & exit 134;
+	esac
+
+
+gencodetolustre.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	case ${genome[0]} in
+		hg19)
+			cp [% input.hg19.gencode.genome %] [% gencodetolustre.gencode.genome %];
+			eval ${genome[0]}_gencode_genome=$(readlink -f [% gencodetolustre.gencode.genome %]);
+			declare -p $( echo ${genome[0]}_gencode_genome) > [% gencodetolustre.genomeloc %];
+			cp [% input.hg19.gencode.transcriptome %] [% gencodetolustre.gencode.transcriptome %];
+			eval ${genome[0]}_gencode_transcriptome=$(readlink -f [% gencodetolustre.gencode.transcriptome %] );
+			declare -p $( echo ${genome[0]}_gencode_transcriptome) >> [% gencodetolustre.genomeloc %];
+			gunzip -c [% input.hg19.gencode.gtf %] > [% gencodetolustre.gencode.gtf %];
+			eval ${genome[0]}_gencode_gtf=$(readlink -f [% gencodetolustre.gencode.gtf %] );
+			declare -p $( echo ${genome[0]}_gencode_gtf) >> [% gencodetolustre.genomeloc %];
+			;;
+		mm10)
+			cp [% input.mm10.gencode.genome %] [% gencodetolustre.gencode.genome %];
+			eval ${genome[0]}_gencode_genome=$(readlink -f [% gencodetolustre.gencode.genome %]);
+			declare -p $( echo ${genome[0]}_gencode_genome) > [% gencodetolustre.genomeloc %];
+			cp [% input.mm10.gencode.transcriptome %] [% gencodetolustre.gencode.transcriptome %];
+			eval ${genome[0]}_gencode_transcriptome=$(readlink -f [% gencodetolustre.gencode.transcriptome %] );
+			declare -p $( echo ${genome[0]}_gencode_transcriptome) >> [% gencodetolustre.genomeloc %];
+			gunzip -c [% input.mm10.gencode.gtf %] > [% gencodetolustre.gencode.gtf %];
+			eval ${genome[0]}_gencode_gtf=$(readlink -f [% gencodetolustre.gencode.gtf %] );
+			declare -p $( echo ${genome[0]}_gencode_gtf) >> [% gencodetolustre.genomeloc %];
+			;;
+		*)
+			>&2 echo "Genome Not Supported ${genome[0]}" & exit 134;
+	esac
+
+
+refseqtolustre.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	case ${genome[0]} in
+		hg19)
+			cp [% input.hg19.refseq.genome %] [% refseqtolustre.refseq.genome %];
+			eval ${genome[0]}_refseq_genome=$(readlink -f [% refseqtolustre.refseq.genome %]);
+			declare -p $( echo ${genome[0]}_refseq_genome) > [% refseqtolustre.genomeloc %];
+			cp [% input.hg19.refseq.transcriptome %] [% refseqtolustre.refseq.transcriptome %];
+			eval ${genome[0]}_refseq_transcriptome=$(readlink -f [% refseqtolustre.refseq.transcriptome %] );
+			declare -p $( echo ${genome[0]}_refseq_transcriptome) >> [% refseqtolustre.genomeloc %];
+			gunzip -c [% input.hg19.refseq.gtf %] > [% refseqtolustre.refseq.gtf %];
+			eval ${genome[0]}_refseq_gtf=$(readlink -f [% refseqtolustre.refseq.gtf %] );
+			declare -p $( echo ${genome[0]}_refseq_gtf) >> [% refseqtolustre.genomeloc %];
+			;;
+		mm10)
+			cp [% input.mm10.refseq.genome %] [% refseqtolustre.refseq.genome %];
+			eval ${genome[0]}_refseq_genome=$(readlink -f [% refseqtolustre.refseq.genome %]);
+			declare -p $( echo ${genome[0]}_refseq_genome) > [% refseqtolustre.genomeloc %];
+			cp [% input.mm10.refseq.transcriptome %] [% refseqtolustre.refseq.transcriptome %];
+			eval ${genome[0]}_refseq_transcriptome=$(readlink -f [% refseqtolustre.refseq.transcriptome %] );
+			declare -p $( echo ${genome[0]}_refseq_transcriptome) >> [% refseqtolustre.genomeloc %];
+			gunzip -c [% input.mm10.refseq.gtf %] > [% refseqtolustre.refseq.gtf %];
+			eval ${genome[0]}_refseq_gtf=$(readlink -f [% refseqtolustre.refseq.gtf %] );
+			declare -p $( echo ${genome[0]}_refseq_gtf) >> [% refseqtolustre.genomeloc %];
+			;;
+		*)
+			>&2 echo "Genome Not Supported ${genome[0]}" & exit 134;
+	esac
+
+
+salmonindexensembl.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	set +o posix;
+	bash <<-EOF
+	salmon --no-version-check index -t <(gunzip -c [% ensembltolustre.ensembl.transcriptome %]) -p 24 -i [% salmonindexensembl %] --type quasi -k 31;
+	EOF
+	eval ${genome[0]}_ensembl_salmon=$(pwd);
+	declare -p $( echo ${genome[0]}_ensembl_salmon) > [% salmonindexensembl.genomeloc %];
+salmonindexensembl.mem 10000
+salmonindexensembl.cores 24
+
+
+bowtieindexensembl.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/bowtie-0.12.8:${PATH}";
+	gunzip -c [% ensembltolustre.ensembl.genome %] > [% bowtieindexensembl.index.fa %];
+	bowtie-build -f [% bowtieindexensembl.index.fa %] [% bowtieindexensembl.index %];
+	eval ${genome[0]}_ensembl_bowtie=$(pwd)/index;
+	declare -p $( echo ${genome[0]}_ensembl_bowtie) > [% bowtieindexensembl.genomeloc %];
+bowtieindexensembl.mem 10000
+
+
+bowtie2indexensembl.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	gunzip -c [% ensembltolustre.ensembl.genome %] > [% bowtie2indexensembl.index.fa %];
+	bowtie2-build -f [% bowtie2indexensembl.index.fa %] index;
+	eval ${genome[0]}_ensembl_bowtie2=$(pwd);
+	declare -p $( echo ${genome[0]}_ensembl_bowtie2) > [% bowtie2indexensembl.genomeloc %];
+bowtie2indexensembl.mem 10000
+
+
+tophattranscriptomeensembl.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/tophat2.1.0/tophat-2.1.0.Linux_x86_64/:${PATH}";
+	BOWTIE2_INDEXES=[% bowtie2indexensembl %];
+	tophat -G [% ensembltolustre.ensembl.gtf %] --transcriptome-index index ${BOWTIE2_INDEXES}/index;
+	eval ${genome[0]}_ensembl_tophat=$(pwd)/index/ensembl;
+	declare -p $( echo ${genome[0]}_ensembl_tophat) > [% tophattranscriptomeensembl.genomeloc %];
+tophattranscriptomeensembl.mem 5000
+
+salmonindexgencode.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	set +o posix;
+	bash <<-EOF
+	salmon --no-version-check index -t <(gunzip -c [% gencodetolustre.gencode.transcriptome %]) -p 24 -i [% salmonindexgencode %] --type quasi -k 31;
+	EOF
+	eval ${genome[0]}_gencode_salmon=$(pwd);
+	declare -p $( echo ${genome[0]}_gencode_salmon) > [% salmonindexgencode.genomeloc %];
+salmonindexgencode.mem 10000
+salmonindexgencode.cores 24
+
+
+bowtieindexgencode.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/bowtie-0.12.8:${PATH}";
+	gunzip -c [% gencodetolustre.gencode.genome %] > [% bowtieindexgencode.index.fa %];
+	bowtie-build -f [% bowtieindexgencode.index.fa %] [% bowtieindexgencode.index %];
+	eval ${genome[0]}_gencode_bowtie=$(pwd)/index;
+	declare -p $( echo ${genome[0]}_gencode_bowtie) > [% bowtieindexgencode.genomeloc %];
+bowtieindexgencode.mem 10000
+
+
+bowtie2indexgencode.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	gunzip -c [% gencodetolustre.gencode.genome %] > [% bowtie2indexgencode.index.fa %];
+	bowtie2-build -f [% bowtie2indexgencode.index.fa %] index;
+	eval ${genome[0]}_gencode_bowtie2=$(pwd);
+	declare -p $( echo ${genome[0]}_gencode_bowtie2) > [% bowtie2indexgencode.genomeloc %];
+bowtie2indexgencode.mem 10000
+
+
+tophattranscriptomegencode.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/tophat2.1.0/tophat-2.1.0.Linux_x86_64/:${PATH}";
+	BOWTIE2_INDEXES=[% bowtie2indexgencode %];
+	tophat -G [% gencodetolustre.gencode.gtf %] --transcriptome-index ./index ${BOWTIE2_INDEXES}/index;
+	eval ${genome[0]}_gencode_tophat=$(pwd)/index/gencode;
+	declare -p $( echo ${genome[0]}_gencode_tophat) > [% tophattranscriptomegencode.genomeloc %];
+tophattranscriptomegencode.mem 5000
+
+
+salmonindexrefseq.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	set +o posix;
+	bash <<-EOF
+	salmon --no-version-check index -t <(gunzip -c [% refseqtolustre.refseq.transcriptome %]) -p 24 -i [% salmonindexrefseq %] --type quasi -k 31;
+	EOF
+	eval ${genome[0]}_refseq_salmon=$(pwd);
+	declare -p $( echo ${genome[0]}_refseq_salmon) > [% salmonindexrefseq.genomeloc %];
+salmonindexrefseq.mem 10000
+salmonindexrefseq.cores 24
+
+
+bowtieindexrefseq.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/bowtie-0.12.8:${PATH}";
+	gunzip -c [% refseqtolustre.refseq.genome %] > [% bowtieindexrefseq.index.fa %];
+	bowtie-build -f [% bowtieindexrefseq.index.fa %] [% bowtieindexrefseq.index %];
+	eval ${genome[0]}_refseq_bowtie=$(pwd)/index;
+	declare -p $( echo ${genome[0]}_refseq_bowtie) > [% bowtieindexrefseq.genomeloc %];
+bowtieindexrefseq.mem 10000
+
+
+bowtie2indexrefseq.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	gunzip -c [% refseqtolustre.refseq.genome %] > [% bowtie2indexrefseq.index.fa %];
+	bowtie2-build -f [% bowtie2indexrefseq.index.fa %] index;
+	eval ${genome[0]}_refseq_bowtie2=$(pwd);
+	declare -p $( echo ${genome[0]}_refseq_bowtie2) > [% bowtie2indexrefseq.genomeloc %];
+bowtie2indexrefseq.mem 10000
+
+
+tophattranscriptomerefseq.groupby.genome
+	genome=([% groupby.genome.datasource.genome %]);
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/tophat2.1.0/tophat-2.1.0.Linux_x86_64/:${PATH}";
+	BOWTIE2_INDEXES=[% bowtie2indexrefseq %];
+	tophat -G [% refseqtolustre.refseq.gtf %] --transcriptome-index ./index ${BOWTIE2_INDEXES}/index;
+	eval ${genome[0]}_refseq_tophat=$(pwd)/index/refseq;
+	declare -p $( echo ${genome[0]}_refseq_tophat) > [% tophattranscriptomerefseq.genomeloc %];
+tophattranscriptomerefseq.mem 5000
+
+
+foldersorter.once
+	cat [% jobs.ensembltolustre.genomeloc %] [% jobs.gencodetolustre.genomeloc %] \
+		[% jobs.refseqtolustre.genomeloc %] [% jobs.bowtieindexensembl.genomeloc %] \
+		[% jobs.bowtieindexgencode.genomeloc %] [% jobs.bowtieindexrefseq.genomeloc %] \
+		[% jobs.bowtie2indexensembl.genomeloc %] [% jobs.bowtie2indexgencode.genomeloc %] \
+		[% jobs.bowtie2indexrefseq.genomeloc %] [% jobs.salmonindexensembl.genomeloc %] \
+		[% jobs.salmonindexgencode.genomeloc %] [% jobs.salmonindexrefseq.genomeloc %] \
+		[% jobs.tophattranscriptomeensembl.genomeloc %] [% jobs.tophattranscriptomegencode.genomeloc %] \
+		[% jobs.tophattranscriptomerefseq.genomeloc %] > [% foldersorter.genomeloc %];
+
+
+#Ensembl
+rmatsfastqensembl.
+	source [% foldersorter.genomeloc%];
+	gtf=${[% datasource.genome %]_ensembl_gtf};
+	transcriptome=${[% datasource.genome %]_ensembl_transcriptome};
+	genome=${[% datasource.genome %]_ensembl_genome};
+	bowtieindex=${[% datasource.genome %]_ensembl_bowtie}
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/bowtie-0.12.8:${ALGORITHMS}/samtools-0.1.19/bin:${ALGORITHMS}/tophat-1.4.1.Linux_x86_64:${PATH}";
+	set +o posix;
+	bash <<-EOF
+	RNASeq-MATS.py -s1 <(gunzip -c [% fastqtolustre.file.fastq.gz %]) -s2 <(gunzip -c [% fastqtolustre.file2.fastq.gz %]) -gtf ${gtf} -bi ${bowtieindex} -o [% rmatsfastqensembl %] -t [% datasource.frag_type %] -len [% datasource.read_length %];
+	EOF
+	:
+rmatsfastqensembl.mem 3000
+rmatsfastqensembl.cores 16
+
+
+rmats32fastqensembl.
+	source [% foldersorter.genomeloc%];
+	gtf=${[% datasource.genome %]_ensembl_gtf};
+	transcriptome=${[% datasource.genome %]_ensembl_transcriptome};
+	genome=${[% datasource.genome %]_ensembl_genome};
+	bowtieindex=${[% datasource.genome %]_ensembl_bowtie}
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/rMATS.3.2.0.beta:${ALGORITHMS}/tophat2.1.0/tophat-2.1.0.Linux_x86_64/:${PATH}";
+	set +o posix;
+	bash <<-EOF
+	RNASeq-MATS.py -s1 <(gunzip -c [% fastqtolustre.file.fastq.gz %]) -s2 <(gunzip -c [% fastqtolustre.file2.fastq.gz %]) -gtf ${gtf} -bi ${bowtieindex} -o [% rmats32fastqensembl %] -t [% datasource.frag_type %] -len [% datasource.read_length %];
+	EOF
+	:
+rmats32fastqensembl.mem 3000
+rmats32fastqensembl.cores 16
+
+
+tophatensembl.
+	source [% foldersorter.genomeloc%];
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/tophat2.1.0/tophat-2.1.0.Linux_x86_64/:${PATH}";
+	gtf=${[% datasource.genome %]_ensembl_gtf};
+	tophat=${[% datasource.genome %]_ensembl_tophat};
+	BOWTIE2_INDEXES=${[% datasource.genome %]_ensembl_bowtie2};
+	tophat -p 12 -G ${gtf} -T ${tophat} [% fastqtolustre.file.fastq.gz %];
+tophatensembl.cores 12
+tophatensembl.mem 15000
+
+
+rmatsbamensembl.
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/bowtie-0.12.8:${ALGORITHMS}/samtools-0.1.19/bin:${ALGORITHMS}/tophat-1.4.1.Linux_x86_64:${PATH}";
+	RNASeq-MATS.py -s1 rep1_1[:rep1_2][,rep2_1[:rep2_2]]* -s2 rep1_1[:rep1_2][,rep2_1[:rep2_2]]* -gtf gtfFile -bi bowtieIndexBase -o outDir -t readType -len readLength [options]*
+
+
+misoensembl.
+
+
+
+
+
+
+salmonensembl.
+	source [% foldersorter.genomeloc%];
+	gtf=${[% datasource.genome %]_ensembl_gtf};
+	transcriptome=${[% datasource.genome %]_ensembl_transcriptome};
+	genome=${[% datasource.genome %]_ensembl_genome};
+	salmonindex=${[% datasource.genome %]_ensembl_salmon}
+	set +o posix;
+	function quit { >&2 echo $1; exit 3;}
+	case [% datasource.frag_type %] in
+		single)
+			{
+				bash <<-EOF
+				salmon --no-version-check quant -p 12 --useVBOpt --biasCorrect -i ${salmonindex} -l [% datasource.libtype %] -r <(gunzip -cf [% fastqtolustre.file.fastq.gz %]) -o [% salmonensembl %] -g ${gtf};
+				EOF
+			} || { quit "single end failed"; }
+			;;
+		paired)
+			{
+				bash <<-EOF
+				salmon --no-version-check quant -p 12 --useVBOpt --biasCorrect -i ${salmonindex} -l [% datasource.libtype %] -1 <(gunzip -cf [% fastqtolustre.file.fastq.gz %]) -2 <(TO BE FILLED IN) -o [% salmonensembl %] -g ${gtf};
+				EOF
+			} || { quit "paired-end failed"; }
+			;;
+		*)
+			quit "unknown frag_type";
+			;;
+	esac;
+salmonensembl.mem 10000
+salmonensembl.cores 12
+salmonensembl.output libFormatCounts.txt libParams logs quant.genes.sf quant.sf
+
+salmonensembl_sample2.
+	source [% foldersorter.genomeloc%];
+	gtf=${[% datasource.genome %]_ensembl_gtf};
+	transcriptome=${[% datasource.genome %]_ensembl_transcriptome};
+	genome=${[% datasource.genome %]_ensembl_genome};
+	salmonindex=${[% datasource.genome %]_ensembl_salmon}
+	set +o posix;
+	function quit { >&2 echo $1; exit 3;}
+	case [% datasource.frag_type %] in
+		single)
+			{
+				bash <<-EOF
+				salmon --no-version-check quant -p 12 --useVBOpt --biasCorrect -i ${salmonindex} -l [% datasource.libtype %] -r <(gunzip -cf [% fastqtolustre.file2.fastq.gz %]) -o [% salmonensembl_sample2 %] -g ${gtf};
+				EOF
+			} || { quit "single end failed"; }
+			;;
+		paired)
+			{
+				bash <<-EOF
+				salmon --no-version-check quant -p 12 --useVBOpt --biasCorrect -i ${salmonindex} -l [% datasource.libtype %] -1 <(gunzip -cf [% fastqtolustre.file2.fastq.gz %]) -2 <(TO BE FILLED IN) -o [% salmonensembl_sample2 %] -g ${gtf};
+				EOF
+			} || { quit "paired-end failed"; }
+			;;
+		*)
+			quit "unknown frag_type";
+			;;
+	esac;
+salmonensembl_sample2.mem 10000
+salmonensembl_sample2.cores 12
+salmonensembl_sample2.output libFormatCounts.txt libParams logs quant.genes.sf quant.sf
+
+
+
+suppaensembl.
+	set -x;
+	echo -e "sample1\tsample2" > simple.expression;
+	set +o posix;
+	bash <<-EOF
+	paste <(sed '1d' [% salmonensembl.output5 %] |cut -f 1,4) <(sed '1d' [% salmonensembl_sample2.output5 %] |cut -f 4) >> [% suppaensembl.simple.expression %];
+	EOF
+	:
+	source [% foldersorter.genomeloc%];
+	gtf="${[% datasource.genome %]_ensembl_gtf}";
+	transcriptome="${[% datasource.genome %]_ensembl_transcriptome}";
+	genome="${[% datasource.genome %]_ensembl_genome}";
+	case [% datasource.splicing %] in
+		ES)
+			event="SE";
+				;;
+		IR)
+			event="RI";
+			;;
+		*)
+			event="SE SS MX RI FL";
+			;;
+	esac;
+	>&2 echo "${gtf} ${event}";
+	>&2 echo "suppa generateEvents -i ${gtf} -o suppa.events -e ${event} -p";
+	source ~/.bash_aliases;
+	suppa generateEvents -i ${gtf} -o suppa.events -e ${event} -p;
+	regex="suppa.events.([A-Z]+).ioe";
+	for i in *.ioe
+	do [[ ${i} =~ ${regex} ]];
+		>&2 echo ${i};
+		name="${BASH_REMATCH[1]}";
+		>&2 echo ${name};
+		>&2 echo "suppa psiPerEvent --ioe-file $i -e [% suppaensembl.simple.expression %] -o output.$name;";
+		suppa psiPerEvent --ioe-file $i -e [% suppaensembl.simple.expression %] -o output.$name;
+	done
+suppaensembl.mem 5000
+
+#GENCODE
+rmatsfastq.
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/bowtie-0.12.8:${ALGORITHMS}/samtools-0.1.19/bin:${ALGORITHMS}/tophat-1.4.1.Linux_x86_64:${PATH}";
+
+
+
+tophat.
+
+
+
+rmatsbam.
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/bowtie-0.12.8:${ALGORITHMS}/samtools-0.1.19/bin:${ALGORITHMS}/tophat-1.4.1.Linux_x86_64:${PATH}";
+
+
+
+miso.
+
+
+
+salmon.
+
+
+
+suppa.
+
+
+
+#REFSEQ
+rmatsfastq.
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/bowtie-0.12.8:${ALGORITHMS}/samtools-0.1.19/bin:${ALGORITHMS}/tophat-1.4.1.Linux_x86_64:${PATH}";
+
+
+
+tophat.
+
+
+
+rmatsbam.
+	ALGORITHMS="/software/team113/algorithms";
+	PATH="${ALGORITHMS}/bowtie-0.12.8:${ALGORITHMS}/samtools-0.1.19/bin:${ALGORITHMS}/tophat-1.4.1.Linux_x86_64:${PATH}";
+
+
+
+miso.
+
+
+
+salmon.
+
+
+
+suppa.

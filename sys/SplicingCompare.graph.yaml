@@ -1,0 +1,16 @@
+--- 
+0: 
+  tophatensembl: 
+    cmd: "cd /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/tophatensembl;  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tsource /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/foldersorter/genomeloc;\n\tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/tophat2.1.0/tophat-2.1.0.Linux_x86_64/:${PATH}\";\n\tgtf=${hg19_ensembl_gtf};\n\ttophat=${hg19_ensembl_tophat};\n\tBOWTIE2_INDEXES=${hg19_ensembl_bowtie2};\n\ttophat -p 12 -G ${gtf} -T ${tophat} /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/fastqtolustre/file.fastq.gz; 2>/lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/tophatensembl/err"
+    condition: ~
+    cores: 12
+    dependents: []
+
+    mem: 15000
+    placeholders: 
+      - tophatensembl
+      - datasource.genome
+      - datasource.genome
+      - datasource.genome
+      - fastqtolustre.file.fastq.gz
+      - tophatensembl.err
