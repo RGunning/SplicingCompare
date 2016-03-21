@@ -87,3 +87,45 @@
 2016-02-19T10:14:46	run[ 1 ] [ step-filter: rmatsfastqensembl ] [ job-filter: * ]	0
 2016-02-19T11:52:51	run[ 1 ] [ step-filter: rmats32fastqensembl ] [ job-filter: * ]	0
 2016-02-19T12:14:23	run[ 1 ] [ step-filter: tophatensembl ] [ job-filter: * ]	0
+2016-02-22T16:00:38	run[ 1 ] [ step-filter: rmatsfastqensembl ] [ job-filter: * ]	0
+2016-02-23T13:54:51	run[ 1 ] [ step-filter: rmatsfastqensembl ] [ job-filter: * ]	smoke-test
+2016-02-23T13:55:33	run[ 1 ] [ step-filter: rmatsfastqensembl ] [ job-filter: * ]	0
+2016-02-29T16:57:42	run[ 1 ] [ step-filter: tophatensembl ] [ job-filter: * ]	0
+2016-02-29T16:58:20	run[ 1 ] [ step-filter: tophatensembl ] [ job-filter: * ]	0
+2016-03-06T21:43:00	run[ 1 ] [ step-filter: rmatsfastqensembl rmats32fastqensembl rmatsfastqrefseq rmats32fastqrefseq rmatsfastqgencode rmats32fastqgencode ] [ job-filter: * ]	0
+2016-03-07T10:26:50	run[ 1 ] [ step-filter: rmatsfastqensembl rmats32fastqensembl rmatsfastqrefseq rmats32fastqrefseq rmatsfastqgencode rmats32fastqgencode ] [ job-filter: * ]	0
+2016-03-07T10:51:08	run[ 1 ] [ step-filter: rmats32fastqensembl rmats32fastqrefseq rmats32fastqgencode ] [ job-filter: * ]	0
+2016-03-07T10:53:34	run[ 1 ] [ step-filter: rmats32fastqensembl rmats32fastqrefseq rmats32fastqgencode ] [ job-filter: * ]	0
+2016-03-07T11:16:06	run[ 1 ] [ step-filter: rmats32fastqensembl rmats32fastqrefseq rmats32fastqgencode ] [ job-filter: * ]	0
+2016-03-07T13:05:40	run[ 1 ] [ step-filter: rmats32fastqensembl rmats32fastqrefseq rmats32fastqgencode ] [ job-filter: * ]	0
+2016-03-07T15:20:51	run[ 1 ] [ step-filter: rmats32fastqensembl rmats32fastqrefseq rmats32fastqgencode ] [ job-filter: * ]	0
+2016-03-08T13:38:55	run[ 1 ] [ step-filter: rmats32fastqensembl ] [ job-filter: * ]	smoke-test
+2016-03-08T13:39:52	run[ 1 ] [ step-filter: rmats32fastqensembl ] [ job-filter: * ]	0
+2016-03-08T13:47:54	run[ 1 ] [ step-filter: rmatsfastqgencode ] [ job-filter: * ]	0
+2016-03-08T13:49:22	run[ 1 ] [ step-filter: rmats32fastqensembl ] [ job-filter: * ]	0
+2016-03-08T14:40:57	run[ 1 ] [ step-filter: tophatensembl ] [ job-filter: * ]	0
+2016-03-08T16:30:30	run[ 1 ] [ step-filter: tophatensembl ] [ job-filter: * ]	0
+2016-03-08T17:04:21	run[ 1 ] [ step-filter: rmatsfastqrefseq ] [ job-filter: * ]	smoke-test
+2016-03-09T13:31:42	run[ 1 ] [ step-filter: gencodetolustre refseqtolustre ensembltolustre ] [ job-filter: * ]	0
+2016-03-09T13:35:46	run[ 1 ] [ step-filter: refseqtolustre ] [ job-filter: * ]	0
+2016-03-09T13:46:31	run[ 1 ] [ step-filter: refseqtolustre ] [ job-filter: * ]	0
+2016-03-09T15:16:10	run[ 1 ] [ step-filter: gencodetolustre refseqtolustre ensembltolustre ] [ job-filter: * ]	0
+2016-03-09T16:47:58	run[ 1 ] [ step-filter: gencodetolustre refseqtolustre ensembltolustre ] [ job-filter: * ]	0
+2016-03-11T17:11:25	run[ 1 ] [ step-filter: tophatensembl ] [ job-filter: * ]	0
+2016-03-11T17:15:34	run[ 1 ] [ step-filter: tophatensembl ] [ job-filter: * ]	0
+2016-03-11T17:24:40	run[ 1 ] [ step-filter: bowtie2indexensembl bowtie2indexrefseq bowtie2indexgencode ] [ job-filter: * ]	0
+2016-03-11T17:29:51	run[ 1 ] [ step-filter: rmatsfastqgencode ] [ job-filter: * ]	
+2016-03-12T23:48:25	run[ 1 ] [ step-filter: foldersorter rmatsfastqensembl rmats32fastqensembl tophatensembl tophatensemblsample2 rmatsbamensembl rmats32bamensembl misoensembl salmonensembl salmonensembl_sample2 suppaensembl rmatsfastqgencode rmats32fastqgencode tophatgencode tophatgencodesample2 rmatsbamgencode rmats32bamgencode misogencode salmongencode salmongencode_sample2 suppagencode rmatsfastqrefseq rmats32fastqrefseq tophatrefseq tophatrefseqsample2 rmatsbamrefseq rmats32bamrefseq misorefseq salmonrefseq salmonrefseq_sample2 supparefseq ] [ job-filter: * ]	0
+2016-03-14T10:53:28	run[ 1 ] [ step-filter: tophatrefseq tophatrefseqsample2 tophatensembl tophatensemblsample2 tophatgencode tophatgencodesample2 ] [ job-filter: * ]	0
+2016-03-14T10:59:07	run[ 1 ] [ step-filter: salmonindexrefseq ] [ job-filter: * ]	0
+2016-03-14T14:02:40	run[ 1 ] [ step-filter: refseqtolustre ] [ job-filter: * ]	0
+2016-03-14T14:04:10	run[ 1 ] [ step-filter: salmonrefseq ] [ job-filter: * ]	0
+2016-03-14T14:06:16	run[ 1 ] [ step-filter: salmonrefseq_sample2 ] [ job-filter: * ]	0
+2016-03-14T14:18:27	run[ 1 ] [ step-filter: tophatrefseq tophatrefseqsample2 tophatensembl tophatensemblsample2 tophatgencode tophatgencodesample2 ] [ job-filter: * ]	0
+2016-03-15T11:43:47	run[ 1 ] [ step-filter: tophatgencodesample2 ] [ job-filter: * ]	0
+2016-03-15T11:48:21	run[ 1 ] [ step-filter: rmatsbamrefseq rmatsbamensembl rmatsbamgencode rmats32bamrefseq rmats32bamensembl rmats32bamgencode ] [ job-filter: * ]	0
+2016-03-17T16:44:25	run[ 1 ] [ step-filter: misoensembl misoensemblsample2 misoensemblsummarise ] [ job-filter: * ]	0
+2016-03-17T17:07:15	run[ 1 ] [ step-filter: misoensembl misoensemblsample2 misoensemblsummarise ] [ job-filter: * ]	0
+2016-03-18T11:35:29	run[ 1 ] [ step-filter: misoensembl misoensemblsample2 misoensemblsummarise ] [ job-filter: * ]	0
+2016-03-18T11:58:27	run[ 1 ] [ step-filter: misoensembl misoensemblsample2 misoensemblsummarise ] [ job-filter: * ]	0
+2016-03-18T12:56:25	run[ 1 ] [ step-filter: misoensembl misoensemblsample2 misoensemblsummarise ] [ job-filter: * ]	0

@@ -1,14 +1,40 @@
 --- 
 0: 
-  tophatensembl: 
-    cmd: "cd /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/tophatensembl;  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tsource /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/foldersorter/genomeloc;\n\tALGORITHMS=\"/software/team113/algorithms\";\n\tPATH=\"${ALGORITHMS}/tophat2.1.0/tophat-2.1.0.Linux_x86_64/:${PATH}\";\n\tgtf=${hg19_ensembl_gtf};\n\ttophat=${hg19_ensembl_tophat};\n\tBOWTIE2_INDEXES=${hg19_ensembl_bowtie2};\n\ttophat -p 12 -G ${gtf} -T ${tophat} /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/fastqtolustre/file.fastq.gz; 2>/lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/tophatensembl/err"
+  misoensembl: 
+    cmd: "cd /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/misoensembl;  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tsource /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/foldersorter/genomeloc;\n\tgtf=${hg19_ensembl_gtf};\n\tgtf2gff3 ${gtf} > ensembl.gff3;\n\tindex_gff --index ensembl.gff3 indexed/\n\tcase single in\n\t\tsingle)\n\t\t\tmiso --run indexed /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/tophatensembl/accepted_hits.bam.bai --output-dir output --read-len 76;\n\t\t\t;;\n\t\tpaired)\n\t\t\tmiso --run indexed /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/tophatensembl/accepted_hits.bam.bai --paired-end --output-dir .output --read-len 76;\n\t\t\t;;\n\tesac;\n\tsummarize_miso --summarize-samples output/ output/ 2>/lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/misoensembl/err"
     condition: ~
-    cores: 12
-    mem: 15000
+    cores: 8
+    mem: 20000
     placeholders: 
-      - tophatensembl
+      - misoensembl
       - datasource.genome
+      - datasource.frag_type
+      - tophatensembl.output1
+      - datasource.read_length
+      - tophatensembl.output1
+      - datasource.read_length
+      - misoensembl.err
+  misoensemblsample2: 
+    cmd: "cd /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/misoensemblsample2;  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tsource /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/foldersorter/genomeloc;\n\tgtf=${hg19_ensembl_gtf};\n\tgtf2gff3 ${gtf} > ensembl.gff3;\n\tindex_gff --index ensembl.gff3 indexed/\n\tcase single in\n\t\tsingle)\n\t\t\tmiso --run indexed /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/tophatensemblsample2/accepted_hits.bam.bai --output-dir output --read-len 76;\n\t\t\t;;\n\t\tpaired)\n\t\t\tmiso --run indexed /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/tophatensemblsample2/accepted_hits.bam.bai --paired-end --output-dir output --read-len 76;\n\t\t\t;;\n\tesac;\n\tsummarize_miso --summarize-samples output/ output/ 2>/lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/misoensemblsample2/err"
+    condition: ~
+    cores: 8
+    mem: 20000
+    placeholders: 
+      - misoensemblsample2
       - datasource.genome
-      - datasource.genome
-      - fastqtolustre.file.fastq.gz
-      - tophatensembl.err
+      - datasource.frag_type
+      - tophatensemblsample2.output1
+      - datasource.read_length
+      - tophatensemblsample2.output1
+      - datasource.read_length
+      - misoensemblsample2.err
+  misoensemblsummarise: 
+    cmd: "cd /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/misoensemblsummarise;  ls -d * | grep -v err | xargs rm -rf;. /nfs/users/nfs_r/rg12/.bashrc;>&2 date;trap SomeErrorHandler ERR; \tsource /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/foldersorter/genomeloc;\n\tcompare_miso --compare-samples /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/misoensembl/output /lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/misoensemblsample2/output ./ 2>/lustre/scratch109/sanger/rg12/SplicingCompare/run1/job0/misoensemblsummarise/err"
+    condition: ~
+    cores: 8
+    mem: 5000
+    placeholders: 
+      - misoensemblsummarise
+      - misoensembl
+      - misoensemblsample2
+      - misoensemblsummarise.err
